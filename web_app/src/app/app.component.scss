@@ -1,0 +1,119 @@
+
+@use '../app/_theme-colors.scss' as my-theme;
+@use 'sass:map';
+
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 30px;
+}
+
+.menu-options-li{
+  justify-content: center;
+  align-items: center;
+}
+.mat-icon{
+  margin-top: 10px;
+}
+.logout{
+  text-decoration: none;
+  color: map.get(my-theme.$primary-palette, 0);
+  padding-bottom: 3.9px;
+
+
+}
+.logout:hover {
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  color: red;
+  border-bottom: red solid 4px;
+}
+
+.menu-option {
+  text-decoration: none;
+  color: map.get(my-theme.$primary-palette, 0);
+  font-size: 15px;
+  padding-bottom: 13px;
+}
+
+.menu-option:hover {
+  transition: color 0.3s ease,
+  border-bottom 0.3s ease;
+  color: map.get(my-theme.$primary-palette, 60);
+  border-bottom: map.get(my-theme.$primary-palette, 60) solid 4px;
+}
+
+.active-link {
+  color: map.get(my-theme.$primary-palette, 60);
+  border-bottom: map.get(my-theme.$primary-palette, 60) solid 4px;
+}
+.sub-title{
+  color: map.get(my-theme.$primary-palette, 60);
+
+}
+
+mat-sidenav-container {
+  position: relative;
+}
+
+mat-toolbar{
+  height: 50px;
+  border-bottom: 4px solid map.get(my-theme.$primary-palette, 0);
+  color: map.get(my-theme.$primary-palette, 0);
+  .menu-toggle-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      padding-top: 1%;
+      padding-bottom: 35%;
+      padding-right: 35%;
+      font-size: 30px;
+      line-height: 1;
+      margin: 0;
+    }
+  }
+}
+
+mat-sidenav {
+  border-radius: 0;
+}
+
+.brand-title {
+  margin-left: 1%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: map.get(my-theme.$primary-palette, 0);
+  text-decoration: none;
+  user-select: none;
+
+}
+
+.menu-toggle-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .mat-sidenav-container {
+    height: 100vh;
+    width: 100vw;
+  }
+  .menu-toggle-button {
+    display: flex !important;
+  }
+
+  nav ul {
+      display: none;
+  }
+}
+

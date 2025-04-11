@@ -1,0 +1,37 @@
+<!--
+<app-menu></app-menu>
+<router-outlet />
+-->
+
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <app-menu [sidenav]="sidenav" [isLoggedIn]="isLoggedIn"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar>
+      <button
+        mat-button
+        (click)="onToggleSidenav(sidenav)"
+        class="menu-toggle-button">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="brand-title" routerLink="/">Strike<span class="sub-title">Zone</span></a>
+      <nav>
+        <ul>
+          <li class="menu-option-li"><a class="menu-option" routerLink="/contact" routerLinkActive="active-link">Elérhetőség</a></li>
+          <li class="menu-option-li"><a class="menu-option" routerLink="/pricing" routerLinkActive="active-link">Árlista</a></li>
+          @if (isLoggedIn) {
+          <li class="menu-option-li"><a class="menu-option" routerLink="/booking" routerLinkActive="active-link">Foglalás</a></li>
+          <li class="menu-option-li"><a class="menu-option" routerLink="/my-bookings" routerLinkActive="active-link">Foglalásaim</a></li>
+          <li class="menu-option-li"><a class="menu-option" routerLink="/profile" routerLinkActive="active-link">Profil</a></li>
+          <li><a class="logout" href="#" (click)="$event.preventDefault(); logout()"> <mat-icon matListItemIcon>logout</mat-icon></a></li>
+          } @else {
+            <li class="menu-option-li"><a class="menu-option" routerLink="/login" routerLinkActive="active-link">Bejelentkezés</a></li>
+          }
+          </ul>
+      </nav>
+    </mat-toolbar>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

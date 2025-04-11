@@ -1,0 +1,40 @@
+<mat-nav-list>
+  @if (isLoggedIn) {
+
+  <a mat-list-item routerLink="/profile" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>person</mat-icon>
+    <span matListItemTitle>Profil</span>
+  </a>
+  <a mat-list-item routerLink="/my-bookings" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>event_available</mat-icon>
+    <span matListItemTitle>Foglalásaim</span>
+  </a>
+  <a mat-list-item routerLink="/booking" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>calendar_month</mat-icon>
+    <span matListItemTitle>Foglalás</span>
+  </a>
+ }
+
+  @if (!isLoggedIn) {
+
+  <a mat-list-item routerLink="/login" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>login</mat-icon>
+    <span matListItemTitle>Bejelentkezés</span>
+  </a>
+}
+  <a mat-list-item routerLink="/pricing" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>payments</mat-icon>
+    <span matListItemTitle>Árlista</span>
+  </a>
+  <a mat-list-item routerLink="/contact" routerLinkActive="active-list-item" (click)="closeMenu()">
+    <mat-icon matListItemIcon>pin_drop</mat-icon>
+    <span matListItemTitle>Elérhetőség</span>
+  </a>
+  @if (isLoggedIn) {
+
+  <a mat-list-item (click)="logout()">
+    <mat-icon matListItemIcon>logout</mat-icon>
+    <span matListItemTitle>Logout</span>
+  </a>
+}
+</mat-nav-list>

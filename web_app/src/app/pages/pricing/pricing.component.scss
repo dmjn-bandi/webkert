@@ -1,0 +1,29 @@
+.price-section {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+
+
+  mat-card {
+    width: 100%;
+    max-width: 800px;
+    padding: 10px;
+
+    mat-card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    mat-table {
+      background: inherit;
+      width: 100%;
+    }
+
+    mat-header-cell, mat-cell {
+      padding: 12px;
+    }
+  }
+}

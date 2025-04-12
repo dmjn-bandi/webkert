@@ -1,6 +1,7 @@
 export interface Price {
-  id: string;
+  id: number;
   dayOfWeek: string;
-  timeRange: string; 
+  timeRangeStart: number;
+  timeRangeEnd: number;
   pricePerHour: number;
 }

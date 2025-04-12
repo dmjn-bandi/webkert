@@ -1,18 +1,23 @@
+@use '../../_theme-colors.scss' as my-theme;
+@use 'sass:map';
+
+
 .not-found-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #212121;
   text-align: center;
-  padding: 2rem;
+
 }
 
 .not-found-container h1 {
-  font-size: 8rem;
+  font-size: 6rem;
   font-weight: bold;
   margin: 0;
-  color: #2196F3;
+  color: map.get(my-theme.$primary-palette, 60);
 }
 
 .not-found-container p {
@@ -23,7 +28,7 @@
 .not-found-container a {
   font-size: 1rem;
   text-decoration: none;
-  background-color: #2196F3;
+  background-color: map.get(my-theme.$primary-palette, 60);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
@@ -31,5 +36,5 @@
 }
 
 .not-found-container a:hover {
-  background-color: #1976D2;
+  background-color: map.get(my-theme.$primary-palette, 40);
 }

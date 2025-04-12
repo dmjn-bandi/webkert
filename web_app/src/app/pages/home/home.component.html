@@ -1,1 +1,39 @@
-<p>home works!</p>
+<mat-card class="hero-card">
+  <h1>Üdvözöl a Strike<span class="sub-title">Zone</span>!</h1>
+  <p>Foglalj le egy pályát és élvezd a bowling élményt barátaiddal vagy családoddal!</p>
+  <button mat-raised-button color="primary" routerLink="/booking">Időpont foglalása</button>
+</mat-card>
+
+<section class="info-section">
+  <mat-card class="info-card">
+    <mat-card-title>Nyitvatartás</mat-card-title>
+    <mat-card-content>
+      <span>Hétfő - Csütörtök:</span>
+      <span>10:00 - 20:00</span>
+      <span>Péntek - Vasárnap:</span>
+      <span>10:00 - 22:00</span>
+      <button mat-button routerLink="/contact">Kapcsolatfelvétel</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="info-card">
+    <mat-card-title>Árlista</mat-card-title>
+    <mat-card-content>
+      <p>Már <span class="sub-price">3,000</span> Ft/óra-tól! Tekintsd meg árainkat.</p>
+      <button mat-button color="accent" routerLink="/pricing">Megnézem</button>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="info-card">
+    <mat-card-title>Elérhetőség</mat-card-title>
+    <mat-card-content>
+      <div class="contact-details">
+        <span> Szeged, Tisza Lajos krt. 103, 6725</span>
+      </div>
+      <div class="contact-details">
+        <a href="tel:+3612345678">+36 20 234 5678</a>
+      </div>
+      <button mat-button routerLink="/contact">Kapcsolatfelvétel</button>
+    </mat-card-content>
+  </mat-card>
+</section>

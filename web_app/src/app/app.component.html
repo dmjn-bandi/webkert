@@ -1,9 +1,5 @@
-<!--
-<app-menu></app-menu>
-<router-outlet />
--->
 
-
+<div class="container">
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
     <app-menu [sidenav]="sidenav" [isLoggedIn]="isLoggedIn"></app-menu>
@@ -35,3 +31,4 @@
     <router-outlet />
   </mat-sidenav-content>
 </mat-sidenav-container>
+</div>

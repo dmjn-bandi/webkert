@@ -2,6 +2,10 @@
 @use '../app/_theme-colors.scss' as my-theme;
 @use 'sass:map';
 
+.container{
+  height: 100%;
+  background-color: map.get(my-theme.$primary-palette, 98);
+}
 
 nav {
   display: flex;

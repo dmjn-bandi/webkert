@@ -1,1 +1,32 @@
-<p>pricing works!</p>
+<section class="price-section">
+  <mat-card>
+    <mat-card-title>
+      <mat-icon>attach_money</mat-icon>
+      Árlista
+    </mat-card-title>
+    <mat-card-content>
+      <mat-table [dataSource]="dataSource" class="mat-elevation-z2">
+
+        <ng-container matColumnDef="dayOfWeek">
+          <mat-header-cell *matHeaderCellDef> Nap </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.dayOfWeek }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="timeRange">
+          <mat-header-cell *matHeaderCellDef> Időszak </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.timeRangeStart | timeRangeFormat }} - {{ element.timeRangeEnd | timeRangeFormat }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="pricePerHour">
+          <mat-header-cell *matHeaderCellDef> Ár </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.pricePerHour | number }} Ft/óra </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </mat-card-content>
+  </mat-card>
+</section>

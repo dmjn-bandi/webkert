@@ -1,1 +1,51 @@
-<p>booking works!</p>
+<mat-card>
+  <div class="title-div">
+  <mat-card-title>Bowling Pálya Foglalás</mat-card-title>
+  </div>
+  <mat-card-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Pálya</mat-label>
+      <mat-select [(value)]="selectedLaneNumb">
+        @for (lane of lanes; track lane.laneNumb) {
+          <mat-option [value]="lane.laneNumb">
+            Pálya #{{ lane.laneNumb }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Dátum</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Kezdési óra</mat-label>
+      <input matInput type="number" min="10" max="22" [(ngModel)]="selectedStartHour">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Hossz (óra)</mat-label>
+      <input matInput type="number" min="1" max="12" [(ngModel)]="duration">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Játékosok száma</mat-label>
+      <input matInput type="number" min="1" max="6" [(ngModel)]="numberOfPlayers">
+    </mat-form-field>
+
+    <div class="center-button">
+      <div class="button-label">
+        <div class="price-display">
+          <strong>Várható ár:</strong> {{ calculatedPrice | number:'1.0-0' }} Ft
+        </div>
+        <button mat-raised-button color="primary" (click)="makeBooking()" [disabled]="!selectedLaneNumb || !selectedDate">
+          Foglalás
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+
+</mat-card>

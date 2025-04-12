@@ -1,0 +1,42 @@
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+mat-card {
+  max-width: 500px;
+  margin: 24px auto;
+
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+
+  .button-label {
+    text-align: center;
+
+    p {
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+  }
+}
+.title-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 16px;
+
+}
+
+.price-display {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: right;
+}
+
+

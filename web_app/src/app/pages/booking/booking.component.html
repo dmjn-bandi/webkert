@@ -64,7 +64,7 @@
 }
 
 @if(showBooking){
-  <mat-card>
+  <mat-card align="center">
     <mat-card-title>Foglalás Részletei</mat-card-title>
     <mat-card-content>
       <p><strong>Pálya száma:</strong> {{ selectedLaneNumb }}</p>
@@ -75,7 +75,7 @@
       <p><strong>Végösszeg:</strong> {{ total | number:'1.0-0' }} Ft</p>
     </mat-card-content>
 
-    <mat-card-actions align="end">
+    <mat-card-actions  class="centered-actions" >
       <button mat-raised-button color="primary" routerLink="/home">Rendben</button>
     </mat-card-actions>
   </mat-card>

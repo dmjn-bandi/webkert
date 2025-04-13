@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import {  RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -44,7 +44,7 @@ export class SignupComponent {
 
   signup(): void {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Please correct the form errors before submitting.';
+      this.signupError = 'Kérem javítson ki minden mezőt!';
       return;
     }
 
@@ -68,8 +68,7 @@ export class SignupComponent {
       bookings: [],
     };
 
-    console.log('New user:', newUser);
-    console.log('Form value:', this.signUpForm.value);
+
     localStorage.setItem('isLoggedIn', 'true');
 
 

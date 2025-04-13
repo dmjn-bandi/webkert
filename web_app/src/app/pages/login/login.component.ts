@@ -53,7 +53,7 @@ export class LoginComponent {
         window.location.href = '/home';
       }, 2000);
     } else {
-      this.loginError = 'Rossz email vagy jelszó';
+      this.loginError = 'Rossz email vagy jelszó!';
     }
   }
 }

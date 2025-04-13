@@ -43,6 +43,12 @@
           <mat-icon matSuffix>lock</mat-icon>
         </mat-form-field>
 
+        @if (signupError) {
+          <div class="error-message">
+            {{ signupError }}
+          </div>
+        }
+
         <div class="buttons-row">
           <button mat-flat-button color="primary" type="submit">Regisztrálok</button>
           <button mat-flat-button [routerLink]="['/login']">Már van fiókod?</button>

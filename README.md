@@ -1,4 +1,5 @@
-Projekt téma: Bowling pálya időpontfoglaló oldal 
-Bejelentkezési adatok: 
-  -- email: barmiaron@gmail.com 
-  -- jelszó: jelszo
+## Projekt téma: Bowling pálya időpontfoglaló oldal 
+## Bejelentkezési adatok: 
+- **Email:** `barmiaron@gmail.com`  
+- **Jelszó:** `jelszo`
+

@@ -4,7 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { Data } from '../../shared/data/pricing-data';
+import { Data } from '../../shared/data/price-data';
 import { TimeRangeFormatPipe } from '../../shared/pipes/time-range-format.pipe';
 import { CommonModule } from '@angular/common';
 

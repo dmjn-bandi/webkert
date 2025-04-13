@@ -49,7 +49,7 @@ export class LoginComponent {
         window.location.href = '/home';
       }, 2000);
     } else {
-      this.loginError = 'Invalid email or password!';
+      this.loginError = 'Rossz email vagy jelszó';
     }
   }
 }

@@ -42,7 +42,9 @@ export class AppComponent implements OnInit {
   }
   constructor() {}
 
-
+  onLogoutHandled() {
+    window.location.href = '/home';
+  }
 
   onToggleSidenav(sidenav: MatSidenav){
     sidenav.toggle();

@@ -31,7 +31,7 @@ export class MenuComponent {
 
   logout() {
     localStorage.setItem('isLoggedIn', 'false');
-    window.location.href = '/home';
+    this.logoutEvent.emit();
     this.closeMenu();
   }
 }

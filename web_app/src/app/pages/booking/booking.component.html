@@ -1,3 +1,15 @@
+@if (isLoading) {
+  <div class="loading-container-div">
+  <div class="loading-container">
+    <h2>Időpontfoglalás folyamatban</h2>
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Kérem várjon...</p>
+  </div>
+  </div>
+}
+
+
+@if(showForm){
 <mat-card>
   <div class="title-div">
   <mat-card-title>Bowling Pálya Foglalás</mat-card-title>
@@ -23,7 +35,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Kezdési óra</mat-label>
-      <input matInput type="number" min="10" max="22" [(ngModel)]="selectedStartHour">
+      <input matInput type="number" min="1" max="24" [(ngModel)]="selectedStartHour">
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -33,7 +45,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Játékosok száma</mat-label>
-      <input matInput type="number" min="1" max="6" [(ngModel)]="numberOfPlayers">
+      <input matInput type="number" min="1" max="12" [(ngModel)]="numberOfPlayers">
     </mat-form-field>
 
     <div class="center-button">
@@ -41,7 +53,7 @@
         <div class="price-display">
           <strong>Várható ár:</strong> {{ calculatedPrice | number:'1.0-0' }} Ft
         </div>
-        <button mat-raised-button color="primary" (click)="makeBooking()" [disabled]="!selectedLaneNumb || !selectedDate">
+        <button mat-raised-button color="primary" (click)="makeBooking()" [disabled]="!selectedLaneNumb || !selectedDate || !valid_data">
           Foglalás
         </button>
       </div>
@@ -49,3 +61,22 @@
   </mat-card-content>
 
 </mat-card>
+}
+
+@if(showBooking){
+  <mat-card>
+    <mat-card-title>Foglalás Részletei</mat-card-title>
+    <mat-card-content>
+      <p><strong>Pálya száma:</strong> {{ selectedLaneNumb }}</p>
+      <p><strong>Dátum:</strong> {{ selectedDate | date:'yyyy.MM.dd' }}</p>
+      <p><strong>Kezdés:</strong> {{ selectedStartHour }}:00</p>
+      <p><strong>Befejezés:</strong> {{ endHour }}:00</p>
+      <p><strong>Játékosok száma:</strong> {{ numberOfPlayers }}</p>
+      <p><strong>Végösszeg:</strong> {{ total | number:'1.0-0' }} Ft</p>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button mat-raised-button color="primary" routerLink="/home">Rendben</button>
+    </mat-card-actions>
+  </mat-card>
+}

@@ -1,7 +1,11 @@
 <mat-card class="hero-card">
   <h1>Üdvözöl a Strike<span class="sub-title">Zone</span>!</h1>
   <p>Foglalj le egy pályát és élvezd a bowling élményt barátaiddal vagy családoddal!</p>
-  <button mat-raised-button color="primary" routerLink="/booking">Időpont foglalása</button>
+  @if (isLoggedIn) {
+    <button mat-raised-button color="primary" routerLink="/booking">Időpont foglalása</button>
+  } @else {
+    <button mat-raised-button color="primary" routerLink="/login">Időpont foglalása</button>
+  }
 </mat-card>
 
 <section class="info-section">
@@ -9,7 +13,7 @@
     <mat-card-title>Nyitvatartás</mat-card-title>
     <mat-card-content>
       <span>Hétfő - Csütörtök:</span>
-      <span>10:00 - 20:00</span>
+      <span>10:00 - 18:00</span>
       <span>Péntek - Vasárnap:</span>
       <span>10:00 - 22:00</span>
       <button mat-button routerLink="/contact">Kapcsolatfelvétel</button>

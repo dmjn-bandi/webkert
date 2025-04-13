@@ -52,7 +52,7 @@
     <div class="center-button">
       <div class="button-label">
         <div class="price-display">
-          <strong>Várható ár:</strong> {{ calculatedPrice | number:'1.0-0' }} Ft
+          <strong>Várható ár:</strong> {{ calculatedPrice | number }} Ft
         </div>
         <button mat-raised-button color="primary" (click)="makeBooking()" [disabled]="!selectedLaneNumb || !selectedDate || !valid_data">
           Foglalás

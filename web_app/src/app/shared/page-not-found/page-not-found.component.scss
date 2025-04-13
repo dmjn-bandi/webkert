@@ -25,16 +25,15 @@
   margin-bottom: 2rem;
 }
 
-.not-found-container a {
-  font-size: 1rem;
-  text-decoration: none;
-  background-color: map.get(my-theme.$primary-palette, 60);
-  color: white;
+.not-found-container button {
   padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.not-found-container a:hover {
-  background-color: map.get(my-theme.$primary-palette, 40);
+.not-found-container button:hover {
+  transform: translateY(-1px);
 }

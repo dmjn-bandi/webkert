@@ -7,7 +7,7 @@
         <p><strong>Kezdés:</strong> {{ booking.startTime | date:'HH:mm' }}</p>
         <p><strong>Befejezés:</strong> {{ booking.endTime | date:'HH:mm' }}</p>
         <p><strong>Játékosok száma:</strong> {{ booking.numberOfPlayers }}</p>
-        <p><strong>Ár:</strong> {{ booking.price | number:'1.0-0' }} Ft</p>
+        <p><strong>Ár:</strong> {{ booking.price | number }} Ft</p>
       </mat-card-content>
     </mat-card>
   }

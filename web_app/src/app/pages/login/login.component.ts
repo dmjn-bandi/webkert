@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
+import { User } from '../../shared/models/User';
+import { Data } from '../../shared/data/user-data';
 
 @Component({
   selector: 'app-login',
@@ -31,13 +33,15 @@ export class LoginComponent {
   isLoading: boolean = false;
   loginError: string = '';
   showLoginForm: boolean = true;
+  user: User = Data[0];
 
   constructor() {}
 
   login() {
     this.loginError = '';
 
-    if (this.email.value === 'test@gmail.com' && this.password.value === 'testpw') {
+
+    if (this.email.value === this.user.email && this.password.value === this.user.password) {
       this.isLoading = true;
       this.showLoginForm = false;
 

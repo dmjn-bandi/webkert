@@ -3,7 +3,7 @@ export const Data: User[] = [
 
   {
     name: { firstname: 'Áron', lastname: 'Bármi' },
-    email: 'barmiaron@example.com',
+    email: 'barmiaron@gmail.com',
     password: 'jelszo',
     bookings: [
       {

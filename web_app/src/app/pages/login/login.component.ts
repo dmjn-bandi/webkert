@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,8 +28,8 @@ import { Data } from '../../shared/data/user-data';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email = new FormControl('');
-  password = new FormControl('');
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
   isLoading: boolean = false;
   loginError: string = '';
   showLoginForm: boolean = true;

@@ -1,4 +1,5 @@
 <div class="login-container">
+<div class="login-card-layout">
   <h1>Bejelentkezés</h1>
 
   @if (isLoading) {
@@ -29,9 +30,10 @@
       }
 
       <div class="login-buttons">
-        <button mat-flat-button color="primary" type="submit">Bejelentkezés</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="!email.value || !password.value">Bejelentkezés</button>
         <button mat-stroked-button color="accent" type="button" [routerLink]="['/signup']">Regisztrálás</button>
       </div>
     </form>
   }
+</div>
 </div>

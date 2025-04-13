@@ -32,7 +32,6 @@ export class AppComponent implements OnInit {
 
   checkLoginStatus(): void {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    console.log('Login status:', this.isLoggedIn);
   }
 
   logout(): void {

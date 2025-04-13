@@ -27,6 +27,5 @@ export class HomeComponent implements OnInit {
 
   checkLoginStatus(): void {
     this.isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    console.log('Login status:', this.isLoggedIn);
   }
 }

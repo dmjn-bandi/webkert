@@ -13,6 +13,10 @@
     <mat-icon matListItemIcon>calendar_month</mat-icon>
     <span matListItemTitle>Foglalás</span>
   </a>
+  <a mat-list-item routerLink="/availability-checker" routerLinkActive="active-list-item" (click)="closeMenu()">
+      <mat-icon matListItemIcon>schedule</mat-icon>
+      <span matListItemTitle>Időpontnéző</span>
+  </a>
  }
 
   @if (!isLoggedIn) {

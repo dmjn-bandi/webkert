@@ -1,15 +1,67 @@
+@if(bookings.length > 0) {
 <div class="bookings-container">
-  @for (booking of user.bookings; track booking.startTime) {
-    <mat-card class="booking-card">
-      <mat-card-content>
-        <p><strong>Pálya:</strong> {{  booking.laneNumb  }}</p>
-        <p><strong>Dátum:</strong> {{ booking.startTime | date:'yyyy.MM.dd' }}</p>
-        <p><strong>Kezdés:</strong> {{ booking.startTime | date:'HH:mm' }}</p>
-        <p><strong>Befejezés:</strong> {{ booking.endTime | date:'HH:mm' }}</p>
-        <p><strong>Játékosok száma:</strong> {{ booking.numberOfPlayers }}</p>
-        <p><strong>Ár:</strong> {{ booking.price | number }} Ft</p>
-      </mat-card-content>
-    </mat-card>
-  }
-</div>
+  @for(booking of bookings; track booking.id) {
+  <mat-card class="booking-card" [ngClass]="{ 'past-booking': isPast(booking) }" >
+    <mat-card-content>
+      <div class="booking-info-grid">
+        <div>
+          <label>Pálya:</label>
+          <span>#{{ booking.laneNumb }}</span>
+        </div>
+        <div>
+          <label>Dátum:</label>
+          <span>{{ booking.startTime | date: 'yyyy.MM.dd' }}</span>
+        </div>
+        <div>
+          <label>Kezdés:</label>
+          <span>{{ booking.startTime | date: 'HH:mm' }}</span>
+        </div>
+        <div>
+          <label>Befejezés:</label>
+          <span>{{ booking.endTime | date: 'HH:mm' }}</span>
+        </div>
+        <div>
+          <label>Játékosok:</label>
+          @if(editingId !== booking.id){
+          <span >{{ booking.numberOfPlayers }}</span>
+          } @else {
+          <input
+                 matInput
+                 type="number"
+                 min="1"
+                 max="12"
+                 [(ngModel)]="editedPlayers[booking.id]"
+                 class="player-input">
+          }
+        </div>
+        <div>
+          <label>Ár:</label>
+          <span>{{ booking.price | priceFt }}</span>
+        </div>
+      </div>
+    </mat-card-content>
 
+    <mat-card-actions align="end">
+      @if(!isPast(booking)){
+      <ng-container >
+        <button mat-stroked-button color="warn" (click)="deleteBooking(booking.id!)">Törlés</button>
+        @if(editingId !== booking.id){
+        <ng-container>
+          <button mat-flat-button color="primary" (click)="enableEdit(booking)">Szerkesztés</button>
+        </ng-container>
+      } @else {
+
+          <button mat-flat-button color="accent" (click)="savePlayers(booking)">Mentés</button>
+          <button mat-button (click)="cancelEdit()">Mégse</button>
+      }
+      </ng-container>
+    } @else {
+        <span class="past-label">Lejárt foglalás</span>
+    }
+    </mat-card-actions>
+  </mat-card>
+}
+</div>
+} @else {
+  <p class="no-bookings-text">Nincs foglalásod.</p>
+}

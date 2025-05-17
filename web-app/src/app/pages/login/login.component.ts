@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,7 +8,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CommonModule } from '@angular/common';
 import { User } from '../../shared/models/User';
-import { Data } from '../../shared/data/user-data';
+import { AuthService } from '../../shared/services/auth.service';
+import { Subscription } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -27,33 +31,65 @@ import { Data } from '../../shared/data/user-data';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   email = new FormControl('', [Validators.required, Validators.email]);
-  password = new FormControl('', [Validators.required]);
+  password = new FormControl('', [Validators.required, Validators.minLength(6)]);
   isLoading: boolean = false;
   loginError: string = '';
   showLoginForm: boolean = true;
-  user: User = Data[0];
+  authSubscription?: Subscription;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   login() {
+    if (this.email.invalid) {
+      this.loginError = 'Please enter a valid email address';
+      return;
+    }
+
+    if (this.password.invalid) {
+      this.loginError = 'Password must be at least 6 characters long';
+      return;
+    }
+
+    const emailValue = this.email.value || '';
+    const passwordValue = this.password.value || '';
+
+    this.isLoading = true;
+    this.showLoginForm = false;
     this.loginError = '';
 
+    this.authService.signIn(emailValue, passwordValue)
+      .then(userCredential => {
+        console.log('Login successful:', userCredential.user);
+        this.authService.updateLoginStatus(true);
+        this.router.navigateByUrl('/home');
+      })
+      .catch(error => {
+        console.error('Login error:', error);
+        this.isLoading = false;
+        this.showLoginForm = true;
 
-    if (this.email.value === this.user.email && this.password.value === this.user.password) {
-      this.isLoading = true;
-      this.showLoginForm = false;
+        switch(error.code) {
+          case 'auth/user-not-found':
+            this.loginError = 'No account found with this email address';
+            break;
+          case 'auth/wrong-password':
+            this.loginError = 'Incorrect password';
+            break;
+          case 'auth/invalid-credential':
+            this.loginError = 'Invalid email or password';
+            break;
+          default:
+            this.loginError = 'Authentication failed. Please try again later.';
+        }
+      });
+  }
 
-      localStorage.setItem('isLoggedIn', 'true');
-      console.log('Login status:', localStorage.getItem('isLoggedIn'));
-
-
-      setTimeout(() => {
-        window.location.href = '/home';
-      }, 2000);
-    } else {
-      this.loginError = 'Rossz email vagy jelszó!';
-    }
+  ngOnDestroy() {
+    this.authSubscription?.unsubscribe();
   }
 }

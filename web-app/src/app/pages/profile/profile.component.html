@@ -1,8 +1,26 @@
 <mat-card class="profile-card">
   <mat-card-title align="center">Profil adatok</mat-card-title>
   <mat-card-content>
-    <p><strong>Név:</strong>  {{ user.name.lastname }} {{ user.name.firstname }}</p>
-    <p><strong>Email:</strong> {{ user.email }}</p>
-    <p><strong>Foglalások száma:</strong> {{ user.bookings.length }}</p>
+   @if (isLoading) {
+        <div class="loading-container">
+          <p>Loading profile data...</p>
+        </div>
+      } @else if (user) {
+        <div class="profile-info">
+
+          <div class="user-details">
+            <h3 class="user-name">{{ user.name.lastname }} {{ user.name.firstname }}</h3>
+            <div class="user-email">
+              <mat-icon>email</mat-icon>
+              <span>{{ user.email }}</span>
+            </div>
+          </div>
+        </div>
+         } @else {
+        <div class="empty-state">
+          <mat-icon>person_off</mat-icon>
+          <p>No user profile found. Please log in.</p>
+        </div>
+      }
   </mat-card-content>
 </mat-card>

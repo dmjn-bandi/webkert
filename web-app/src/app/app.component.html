@@ -2,7 +2,7 @@
 <div class="container">
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <app-menu [sidenav]="sidenav" [isLoggedIn]="isLoggedIn"   (logoutEvent)="onLogoutHandled()"></app-menu>
+    <app-menu [sidenav]="sidenav" [isLoggedIn]="isLoggedIn"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content >
     <mat-toolbar>
@@ -19,6 +19,7 @@
           <li class="menu-option-li"><a class="menu-option" routerLink="/contact" routerLinkActive="active-link">Elérhetőség</a></li>
           <li class="menu-option-li"><a class="menu-option" routerLink="/pricing" routerLinkActive="active-link">Árlista</a></li>
           @if (isLoggedIn) {
+          <li class="menu-option-li"> <a class="menu-option" routerLink="/availability-checker" routerLinkActive="active-link">Időpontnéző</a></li>
           <li class="menu-option-li"><a class="menu-option" routerLink="/booking" routerLinkActive="active-link">Foglalás</a></li>
           <li class="menu-option-li"><a class="menu-option" routerLink="/my-bookings" routerLinkActive="active-link">Foglalásaim</a></li>
           <li class="menu-option-li"><a class="menu-option" routerLink="/profile" routerLinkActive="active-link">Profil</a></li>

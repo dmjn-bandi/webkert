@@ -1,0 +1,120 @@
+
+
+.form-container button[type="submit"] {
+  margin-bottom: 4px;
+}
+
+mat-card {
+background-color: #ffffff;
+  margin: 20px auto;
+  width: 70%;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+button[type="submit"] {
+  height: 56px;
+  align-self: flex-end;
+}
+
+table {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  font-size: 0.95rem;
+}
+
+th.mat-header-cell {
+  background-color: #eeeeee;
+  font-weight: 600;
+}
+
+.booked {
+  background-color: #ffcdd2 !important; // light red
+  color: #b71c1c;
+  font-weight: 500;
+}
+
+.free {
+  background-color: #c8e6c9 !important; // light green
+  color: #1b5e20;
+  font-weight: 500;
+}
+
+
+.description {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  .description-box {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    border: 1px solid #ccc;
+  }
+
+  .free-box {
+    background-color: #c8e6c9;
+  }
+
+  .booked-box {
+    background-color: #ffcdd2;
+  }
+}
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.submit-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}

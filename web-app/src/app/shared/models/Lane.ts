@@ -1,6 +1,5 @@
-import { Booking } from './Booking';
-
 export interface Lane {
+  id: string;
   laneNumb: number;
-  bookings: Booking[];
+  bookings: string[];
 }

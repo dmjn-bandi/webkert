@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import {  RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { User } from '../../shared/models/User';
+import { AuthService } from '../../shared/services/auth.service';
+
 
 @Component({
   selector: 'app-signup',
@@ -40,40 +42,64 @@ export class SignupComponent {
   showForm = true;
   signupError = '';
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   signup(): void {
     if (this.signUpForm.invalid) {
-      this.signupError = 'Kérem javítson ki minden mezőt!';
+      this.signupError = 'Please correct any errors on the form before submitting.';
       return;
     }
 
-    const password = this.signUpForm.get('password');
-    const rePassword = this.signUpForm.get('rePassword');
+    const password = this.signUpForm.get('password')?.value;
+    const rePassword = this.signUpForm.get('rePassword')?.value;
 
-    if (password?.value !== rePassword?.value) {
+    if (password !== rePassword) {
+      this.signupError = 'The passwords do not match.';
       return;
     }
 
     this.isLoading = true;
     this.showForm = false;
 
-    const newUser: User = {
+    const userData: Partial<User> = {
       name: {
         firstname: this.signUpForm.value.name?.firstname || '',
         lastname: this.signUpForm.value.name?.lastname || ''
       },
       email: this.signUpForm.value.email || '',
-      password: this.signUpForm.value.password || '',
       bookings: [],
     };
 
+    const email = this.signUpForm.value.email || '';
+    const pw = this.signUpForm.value.password || '';
 
-    localStorage.setItem('isLoggedIn', 'true');
+    this.authService.signUp(email, pw, userData)
+      .then(userCredential => {
+        console.log('Registration succesful:', userCredential.user);
+        this.authService.updateLoginStatus(true);
+        this.router.navigateByUrl('/home');
+      })
+      .catch(error => {
+        console.error('Regisztrációs hiba:', error);
+        this.isLoading = false;
+        this.showForm = true;
 
-
-    setTimeout(() => {
-      window.location.href = '/home';
-    }, 2000);
+        switch(error.code) {
+          case 'auth/email-already-in-use':
+            this.signupError = 'This email already in use.';
+            break;
+          case 'auth/invalid-email':
+            this.signupError = 'Invalid email.';
+            break;
+          case 'auth/weak-password':
+            this.signupError = 'The password is too weak. Use at least 6 characters.';
+            break;
+          default:
+            this.signupError = 'An error has occurred during registration. Please try again later.';
+        }
+      });
   }
 }

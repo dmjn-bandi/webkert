@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { authGuard, publicGuard } from './shared/guards/auth/auth.guard';
+
 
 export const routes: Routes = [
   {
@@ -11,7 +13,8 @@ export const routes: Routes = [
   },
   {
     path: 'booking',
-    loadComponent: () => import('./pages/booking/booking.component').then(c => c.BookingComponent)
+    loadComponent: () => import('./pages/booking/booking.component').then(c => c.BookingComponent),
+    canActivate: [authGuard]
   },
   {
     path: 'home',
@@ -19,19 +22,29 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.component').then(c => c.LoginComponent)
+    loadComponent: () => import('./pages/login/login.component').then(c => c.LoginComponent),
+    canActivate: [publicGuard]
   },
   {
     path: 'signup',
-    loadComponent: () => import('./pages/signup/signup.component').then(c => c.SignupComponent)
+    loadComponent: () => import('./pages/signup/signup.component').then(c => c.SignupComponent),
+    canActivate: [publicGuard]
   },
   {
+  path: 'availability-checker',
+  loadComponent: () => import('./pages/availability-checker/availability-checker.component')
+    .then(c => c.AvailabilityCheckerComponent),
+  canActivate: [authGuard]
+},
+  {
     path: 'my-bookings',
-    loadComponent: () => import('./pages/my-bookings/my-bookings.component').then(c => c.MyBookingsComponent)
+    loadComponent: () => import('./pages/my-bookings/my-bookings.component').then(c => c.MyBookingsComponent),
+    canActivate: [authGuard]
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.component').then(c => c.ProfileComponent)
+    loadComponent: () => import('./pages/profile/profile.component').then(c => c.ProfileComponent),
+    canActivate: [authGuard]
   },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {

@@ -1,0 +1,52 @@
+<mat-card>
+<form [formGroup]="form" (ngSubmit)="checkAvailability()" class="form-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Dátum</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div class="submit-wrapper">
+    <button mat-raised-button color="primary" type="submit">
+      Lekérdezés
+    </button>
+  </div>
+</form>
+</mat-card>
+
+@if (lanes.length > 0) {
+  <mat-card>
+        <div class="table-wrapper">
+
+    <table mat-table [dataSource]="lanes">
+
+      <ng-container matColumnDef="lane">
+        <th mat-header-cell *matHeaderCellDef>Pálya</th>
+        <td mat-cell *matCellDef="let lane">#{{ lane.laneNumb }}</td>
+      </ng-container>
+
+      @for (hour of hours; track hour) {
+        <ng-container [matColumnDef]="hour.toString()">
+          <th mat-header-cell *matHeaderCellDef>{{ hour }}:00</th>
+          <td mat-cell *matCellDef="let lane"
+              [ngClass]="isHourBooked(lane.laneNumb, hour) ? 'booked' : 'free'">
+          </td>
+        </ng-container>
+      }
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+        </div>
+  </mat-card>
+}
+
+<div class="description">
+  <div>
+    <span class="description-box free-box"></span> Szabad
+  </div>
+  <div>
+    <span class="description-box booked-box"></span> Foglalt
+  </div>
+</div>

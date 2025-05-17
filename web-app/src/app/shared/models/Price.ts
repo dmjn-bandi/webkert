@@ -1,5 +1,5 @@
 export interface Price {
-  id: number;
+  id: string;
   dayOfWeek: string;
   timeRangeStart: number;
   timeRangeEnd: number;

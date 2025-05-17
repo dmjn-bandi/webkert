@@ -23,7 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'web_app';
+  title = 'web-app';
   isLoggedIn = false;
 
   ngOnInit(): void {

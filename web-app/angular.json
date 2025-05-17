@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web_app": {
+    "web-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/web_app",
+            "outputPath": "dist/web-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "web_app:build:production"
+              "buildTarget": "web-app:build:production"
             },
             "development": {
-              "buildTarget": "web_app:build:development"
+              "buildTarget": "web-app:build:development"
             }
           },
           "defaultConfiguration": "development"

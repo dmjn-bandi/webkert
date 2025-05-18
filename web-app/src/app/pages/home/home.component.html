@@ -21,7 +21,11 @@
   <mat-card class="info-card">
     <mat-card-title>Árlista</mat-card-title>
     <mat-card-content>
-      <p>Már <span class="sub-price">1,000</span> Ft/óra-tól! Tekintsd meg árainkat.</p>
+      @if(lowestPrice !== null){
+      <p>
+      Már <span class="sub-price">{{ lowestPrice | number: '1.0-0' }}</span> Ft/óra-tól! Tekintsd meg árainkat.
+      </p>
+}
       <button mat-button color="accent" routerLink="/pricing">Megnézem</button>
     </mat-card-content>
   </mat-card>

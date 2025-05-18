@@ -18,17 +18,21 @@
     </mat-card-content>
   </mat-card>
 
-  <mat-card class="info-card">
-    <mat-card-title>Árlista</mat-card-title>
-    <mat-card-content>
-      @if(lowestPrice !== null){
+<mat-card class="info-card">
+  <mat-card-title>Árlista</mat-card-title>
+  <mat-card-content>
+    @if (lowestPrice === null) {
+      <div class="spinner-container">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+    } @else {
       <p>
-      Már <span class="sub-price">{{ lowestPrice | number: '1.0-0' }}</span> Ft/óra-tól! Tekintsd meg árainkat.
+        Már <span class="sub-price">{{ lowestPrice | number: '1.0-0' }}</span> Ft/óra-tól! Tekintsd meg árainkat.
       </p>
-}
-      <button mat-button color="accent" routerLink="/pricing">Megnézem</button>
-    </mat-card-content>
-  </mat-card>
+    }
+    <button mat-button color="accent" routerLink="/pricing">Megnézem</button>
+  </mat-card-content>
+</mat-card>
 
   <mat-card class="info-card">
     <mat-card-title>Elérhetőség</mat-card-title>

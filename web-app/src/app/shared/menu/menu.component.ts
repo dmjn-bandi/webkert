@@ -31,7 +31,6 @@ export class MenuComponent {
 
 
   constructor(private authService: AuthService) {
-    console.log("constructor called");
   }
 
   closeMenu() {

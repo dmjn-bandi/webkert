@@ -78,7 +78,6 @@ export class SignupComponent {
 
     this.authService.signUp(email, pw, userData)
       .then(userCredential => {
-        console.log('Registration succesful:', userCredential.user);
         this.authService.updateLoginStatus(true);
         this.router.navigateByUrl('/home');
       })

@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { PriceService } from '../../shared/services/price.service';
 import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -15,7 +16,8 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatCardModule,
     RouterLink,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule 
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
